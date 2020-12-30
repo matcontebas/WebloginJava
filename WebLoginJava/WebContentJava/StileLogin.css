@@ -1,0 +1,51 @@
+/* Bordered form */
+form {
+	/*la seguente istruzione centra il form */
+	margin: 0 auto;
+	/*margin: 0 10px 0 20px;*/
+	border: 3px solid #f1f1f1;
+	width: 100%;
+}
+
+h1 {
+	width: 100%;
+	color: red;
+	text-align: center;
+	text-shadow: 5px 10px 2px #93968f, -3px 6px 5px #58d1e3;
+}
+
+div {
+	margin: auto;
+	width: 50%;
+	border: 5px solid green;
+	background-color: Lightgreen;
+	/*filter:drop-shadow(5px,9px,2px,red); non funziona*/
+	/* la seguente istruzione genera l'ombra grigia*/
+	box-shadow: 10px 10px gray;
+}
+/*la seguente istruzione serve per centrare la tabella */
+table
+{ 
+margin-left: auto;
+margin-right: auto;
+}
+input[type=text], input[type=password] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+/*p.center serviva per il vecchio login.html */
+/*p.center {
+  text-align: center;
+ } */
+input[type=submit], input[type=reset] {
+	margin: 4px 2px;
+	cursor: pointer;
+}
+p.err {
+	color: red;
+	text-align: center;
+}	
