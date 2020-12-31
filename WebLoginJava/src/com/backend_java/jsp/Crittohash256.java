@@ -6,12 +6,19 @@ import java.security.NoSuchAlgorithmException;
 
 public class Crittohash256 {
 	
+	/**
+	 * il metodo GetSHA applica l'algoritmo di hashing SHA-256 alla stringa in ingresso
+	 * @param inputstringa in ingresso su cui applicare l'hashing
+	 * @return restituisce un array di byte codificati con SHA-256
+	 * @throws NoSuchAlgorithmException eccezione da lanciare in caso di problemi
+	 */
 	public static byte[] GetSHA(String input) throws NoSuchAlgorithmException
 	{
 		MessageDigest md = MessageDigest.getInstance("SHA-256");
 		return md.digest(input.getBytes(StandardCharsets.UTF_8));
 	}
-	/*
+		
+	/**
 	 * il metodo Convertihextostring, prende in ingresso un array di byte contenente
 	 * la codifica in hash e li trasforma in una stringa.
 	 * Questo metodo funziona per qualunque tipo di codifica hash.
@@ -34,8 +41,8 @@ public class Crittohash256 {
 	 * la prima cifra esadecimale a zero per consentire la rappresentazione del byte con due cifre hex. Per esempio
 	 * la cifra 3 sarebbe rappresentata in hex come 3. Per questo la lunghezza della stringa sarebbe 1 e quindi va aggiunto lo 0
 	 * per ripristinare la corretta rappresentazione hex come '03'.
-	 * 
-	 * 
+	 * @param hash: stringa di byte codificati con algoritmo di hashing
+	 * @return stringa che rappresenta i byte codificati come sequenze esadecimali
 	 */
 	public static String Convertihextostring (byte[] hash) {
 		StringBuilder hexstring=new StringBuilder ();

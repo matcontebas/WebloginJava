@@ -42,7 +42,6 @@
 			/*la classe sanitize string ha un metodo bonofocataghtml che bonifica la stringa dai tag HTML per evitare
 			il cross site scripting*/
 			usersicura = temp.bonificataghtml(request.getParameter("user"));
-			//out.print("<p>"+"user senza tag HTML: "+ usersicura+"</p>");
 			pswsicura = temp.bonificataghtml(request.getParameter("psw"));
 			//out.print("<p>"+"psw senza tag HTML: "+ pswsicura+"</p>");
 			//out.print("<h2>seconda bonifica</h2>");
@@ -50,10 +49,6 @@
 			superiori a 127*/
 			userpulita = temp.eliminacharnonASCII(usersicura);
 			pswpulita = temp.eliminacharnonASCII(pswsicura);
-			//out.print("<p>user senza ascii: "+userpulita+"</p>");
-			//out.print("<p>psw senza ascii: "+pswpulita+"</p>");
-			//out.print("<p>password crittografata: "+ Crittohash256.Convertihextostring(Crittohash256.GetSHA(pswpulita))+"</p>");
-			//out.print("<p>lunghezza psw crittografata: " + Crittohash256.Convertihextostring(Crittohash256.GetSHA(pswpulita)).length()+"</p>");
 			pswcrypt = Crittohash256.Convertihextostring(Crittohash256.GetSHA(pswpulita));
 			try {
 				/*nelle seguenti righe, faccio l'interrogazione al DB con il Prepared Statement piuttosto
@@ -62,7 +57,7 @@
 				PreparedStatement p_stm = connessione.prepareStatement(sql1);
 				p_stm.setString(1, userpulita);
 				p_stm.setString(2, pswcrypt);
-				p_stm.execute();// da utilizzare per vedere se vero o falso
+				p_stm.execute();// da utilizzare per vedere se vero o falso o togliere???
 				ResultSet rs=p_stm.executeQuery();
 				/*le istruzioni seguenti commentate rappresentano l'interrogazione del DB con lo Satement
 				che ho già usato nei precedenti programmi.
@@ -79,15 +74,13 @@
 					out.print("<p><b>login corretto</b></p>");
 				}else{
 					out.print("<p><b>login NON corretto</b></p>");
-					response.sendRedirect("LoginErrato.html");
+					response.sendRedirect("LoginErrato.html");//il metodo response.Redirect è analogo a Header di PHP
 				}
 				
 			} catch (Exception e) {
 				e.printStackTrace();
 				out.print("<p>Errore SQL</p>");
 			}
-			//l'istruzione successiva commentata serve per passare ad un altra pagina web (come header in PHP)
-			//response.sendRedirect("login.html");
 		} else {
 			out.print("<p>Errore di caricamento del driver o connessione a DB</p>");
 		}
