@@ -57,7 +57,7 @@
 				PreparedStatement p_stm = connessione.prepareStatement(sql1);
 				p_stm.setString(1, userpulita);
 				p_stm.setString(2, pswcrypt);
-				p_stm.execute();// da utilizzare per vedere se vero o falso o togliere???
+				//p_stm.execute();// da utilizzare per vedere se vero o falso o togliere???
 				ResultSet rs=p_stm.executeQuery();
 				/*le istruzioni seguenti commentate rappresentano l'interrogazione del DB con lo Satement
 				che ho già usato nei precedenti programmi.
@@ -76,10 +76,15 @@
 					out.print("<p><b>login NON corretto</b></p>");
 					response.sendRedirect("LoginErrato.html");//il metodo response.Redirect è analogo a Header di PHP
 				}
-				
+				//rilascio le risorse
+				rs.close();
+				p_stm.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 				out.print("<p>Errore SQL</p>");
+			} finally {
+				//chiudo la connessione
+				connessione.close();
 			}
 		} else {
 			out.print("<p>Errore di caricamento del driver o connessione a DB</p>");

@@ -10,7 +10,10 @@ public class Crittohash256 {
 	 * il metodo GetSHA applica l'algoritmo di hashing SHA-256 alla stringa in ingresso
 	 * @param inputstringa in ingresso su cui applicare l'hashing
 	 * @return restituisce un array di byte codificati con SHA-256
-	 * @throws NoSuchAlgorithmException eccezione da lanciare in caso di problemi
+	 * @throws NoSuchAlgorithmException eccezione da lanciare in caso che l'algoritmo richiesto
+	 * non sia presente. In questo caso non ho gestito l'eccezione in quanto il metodo è impostato
+	 * per SHA-256. Se dovessimo estenderlo ad un algoritmo generico da definire come input del metodo,
+	 * in tal caso l'eccezione andrebbe gestita.
 	 */
 	public static byte[] GetSHA(String input) throws NoSuchAlgorithmException
 	{
