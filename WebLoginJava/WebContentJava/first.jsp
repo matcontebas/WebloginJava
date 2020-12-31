@@ -56,10 +56,21 @@
 			//out.print("<p>lunghezza psw crittografata: " + Crittohash256.Convertihextostring(Crittohash256.GetSHA(pswpulita)).length()+"</p>");
 			pswcrypt = Crittohash256.Convertihextostring(Crittohash256.GetSHA(pswpulita));
 			try {
+				/*nelle seguenti righe, faccio l'interrogazione al DB con il Prepared Statement piuttosto
+				che con lo Statement perchè questo mi consente di evitare l'SQL Injection*/
+				String sql1= "SELECT * FROM login WHERE userlogin = ? AND pswlogin= ?";
+				PreparedStatement p_stm = connessione.prepareStatement(sql1);
+				p_stm.setString(1, userpulita);
+				p_stm.setString(2, pswcrypt);
+				p_stm.execute();// da utilizzare per vedere se vero o falso
+				ResultSet rs=p_stm.executeQuery();
+				/*le istruzioni seguenti commentate rappresentano l'interrogazione del DB con lo Satement
+				che ho già usato nei precedenti programmi.
 				Statement stm = connessione.createStatement();
 				String sql = "SELECT * FROM login WHERE userlogin = '" + userpulita + "' AND pswlogin = '"
 						+ pswcrypt + "'";
 				ResultSet rs = stm.executeQuery(sql);
+				*/
 				int contarecord=0;
 				while (rs.next()){
 					++contarecord;
