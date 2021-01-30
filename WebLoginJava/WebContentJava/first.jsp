@@ -53,12 +53,12 @@
 			try {
 				/*nelle seguenti righe, faccio l'interrogazione al DB con il Prepared Statement piuttosto
 				che con lo Statement perchè questo mi consente di evitare l'SQL Injection*/
-				String sql1= "SELECT * FROM login WHERE userlogin = ? AND pswlogin= ?";
+				String sql1 = "SELECT * FROM login WHERE userlogin = ? AND pswlogin= ?";
 				PreparedStatement p_stm = connessione.prepareStatement(sql1);
 				p_stm.setString(1, userpulita);
 				p_stm.setString(2, pswcrypt);
 				//p_stm.execute();// da utilizzare per vedere se vero o falso o togliere???
-				ResultSet rs=p_stm.executeQuery();
+				ResultSet rs = p_stm.executeQuery();
 				/*le istruzioni seguenti commentate rappresentano l'interrogazione del DB con lo Satement
 				che ho già usato nei precedenti programmi.
 				Statement stm = connessione.createStatement();
@@ -66,13 +66,15 @@
 						+ pswcrypt + "'";
 				ResultSet rs = stm.executeQuery(sql);
 				*/
-				int contarecord=0;
-				while (rs.next()){
+				int contarecord = 0;
+				while (rs.next()) {
 					++contarecord;
 				}
-				if (contarecord>0) {
+				if (contarecord > 0) {
 					out.print("<p><b>login corretto</b></p>");
-				}else{
+					HttpSession sessione = request.getSession();//metodo dell'oggetto request per creare l'oggetto session
+					sessione.setAttribute("login", userpulita);//memorizza nell'oggetto session il nome utente loggato
+				} else {
 					out.print("<p><b>login NON corretto</b></p>");
 					response.sendRedirect("LoginErrato.html");//il metodo response.Redirect è analogo a Header di PHP
 				}
@@ -96,6 +98,11 @@
 		<li><p>
 				<b>psw: </b><%=pswpulita%></p></li>
 	</ul>
-
+	<br>
+	<ul>
+		<li><p>azione 1</p></li>
+		<li><p>azione 2</p></li>
+		<li><p><a href="form_new_user.jsp">Inserisci new user</a></p></li>
+	</ul>
 </body>
 </html>
