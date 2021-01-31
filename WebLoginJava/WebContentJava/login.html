@@ -5,11 +5,12 @@
 	content="text/html; charset=windows-1252">
 <title>Modulo Login</title>
 <link type="text/css" rel="stylesheet" href="StileLogin.css">
+<script type="text/javascript" src="cookie.js"></script>
 </head>
 <body>
 	<h1>Form di login</h1>
 	<div>
-		<form name="loginmodule" action="first.jsp" method="post">
+		<form action="first.jsp" method="post">
 			<table>
 				<tr>
 					<td>User:</td>
@@ -28,6 +29,10 @@
 				</tr>
 			</table>
 		</form>
+	</div>
+	<div class='cookie-banner' id='cookiebanner'>
+		<p>Questo sito web utilizza cookies proseguendo la navigazione consenti il loro impiego. Si utilizzano solo cookie tecnici</p>
+		<button id='bottone' class='close' onclick='nascondibanner()'>chiudi</button>
 	</div>
 </body>
 </html>
