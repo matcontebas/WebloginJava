@@ -44,7 +44,7 @@
 	%>
 	<footer>
 		<p id="err" class="errore"></p>
-		<p>modulo PHP in esecuzione: esegui_task</p>
+		<p>modulo jsp in esecuzione: form_new_user.jsp</p>
 	</footer>
 
 </body>
