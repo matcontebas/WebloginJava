@@ -3,6 +3,7 @@
 <%@ page import="java.io.*,java.util.*, javax.servlet.*"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="com.backend_java.jsp.*"%>
+<%@ page errorPage="PaginaErrore.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,8 +44,6 @@
 			il cross site scripting*/
 			usersicura = temp.bonificataghtml(request.getParameter("user"));
 			pswsicura = temp.bonificataghtml(request.getParameter("psw"));
-			//out.print("<p>"+"psw senza tag HTML: "+ pswsicura+"</p>");
-			//out.print("<h2>seconda bonifica</h2>");
 			/*la classe sanitize ha anche un metodo per elminare dalla stringa tutti i caratteri ASCII
 			superiori a 127*/
 			userpulita = temp.eliminacharnonASCII(usersicura);
@@ -74,6 +73,23 @@
 					out.print("<p><b>login corretto</b></p>");
 					HttpSession sessione = request.getSession();//metodo dell'oggetto request per creare l'oggetto session
 					sessione.setAttribute("login", userpulita);//memorizza nell'oggetto session il nome utente loggato
+					%>
+	<ul>
+		<li><p>
+				<b>User: </b><%=userpulita%></p></li>
+		<li><p>
+				<b>psw: </b><%=pswpulita%></p></li>
+	</ul>
+	<br>
+	<ul>
+		<li><p>azione 1</p></li>
+		<li><p>azione 2</p></li>
+		<li><p>
+				<a href="form_new_user.jsp">Inserisci new user</a>
+			</p></li>
+	</ul>
+
+	<%
 				} else {
 					out.print("<p><b>login NON corretto</b></p>");
 					response.sendRedirect("LoginErrato.html");//il metodo response.Redirect è analogo a Header di PHP
@@ -92,17 +108,5 @@
 			out.print("<p>Errore di caricamento del driver o connessione a DB</p>");
 		}
 	%>
-	<ul>
-		<li><p>
-				<b>User: </b><%=userpulita%></p></li>
-		<li><p>
-				<b>psw: </b><%=pswpulita%></p></li>
-	</ul>
-	<br>
-	<ul>
-		<li><p>azione 1</p></li>
-		<li><p>azione 2</p></li>
-		<li><p><a href="form_new_user.jsp">Inserisci new user</a></p></li>
-	</ul>
 </body>
 </html>

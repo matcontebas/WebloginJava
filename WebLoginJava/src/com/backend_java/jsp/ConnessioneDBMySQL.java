@@ -31,7 +31,7 @@ un return nel blocco finally perchè può sovrascrivere eventuali gestioni di erro
 			return connection;
 		}
 		catch (SQLException sqlex){
-			sqlex.printStackTrace();
+			//sqlex.printStackTrace();
 			setErrore(0);
 			return connection;
 		}
