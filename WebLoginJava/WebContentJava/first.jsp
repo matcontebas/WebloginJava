@@ -36,8 +36,12 @@
 		if (impostaconnessioneDB.getErrore() == NOERRORE) {
 			out.print("<p>" + "Connessione DB ok" + "</p>");
 		} else {
-			out.print("<p>" + "Errore connessione DB" + "</p>");
+			//out.print("<p>" + "Errore connessione DB" + "</p>");
+			throw new SQLException("Errore SQL generato da first.jsp a causa della mancata connessione al DB");
 		}
+		/*il seguente if diventa inutile in caso di errore poichè al di sopra si lancia l'SQLException che passa l'esecuzione
+		alla pagina jsp di errore. Quindi in caso di errore il seguente codice non viene eseguito. Sarebbe da ristrutturare
+		completamente il codice*/
 		if (connettidriver.getErrore() == NOERRORE && impostaconnessioneDB.getErrore() == NOERRORE) {
 			sanitizestring temp = new sanitizestring();
 			/*la classe sanitize string ha un metodo bonofocataghtml che bonifica la stringa dai tag HTML per evitare
@@ -73,7 +77,7 @@
 					out.print("<p><b>login corretto</b></p>");
 					HttpSession sessione = request.getSession();//metodo dell'oggetto request per creare l'oggetto session
 					sessione.setAttribute("login", userpulita);//memorizza nell'oggetto session il nome utente loggato
-					%>
+	%>
 	<ul>
 		<li><p>
 				<b>User: </b><%=userpulita%></p></li>
@@ -90,7 +94,7 @@
 	</ul>
 
 	<%
-				} else {
+		} else {
 					out.print("<p><b>login NON corretto</b></p>");
 					response.sendRedirect("LoginErrato.html");//il metodo response.Redirect è analogo a Header di PHP
 				}

@@ -11,7 +11,8 @@
 	<div class="message">
 		Siamo spiacenti, si è verificato un errore durante l'esecuzione:<br />
 		<br />
-		<%=exception.getMessage()%>
+		<p><%=exception.getMessage()%></p>
+		<p><a href='login.html'>ritorna alla homepage</a>
 	</div>
 </body>
 </html>

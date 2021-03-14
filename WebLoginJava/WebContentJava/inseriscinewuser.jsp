@@ -56,8 +56,12 @@
 					if (impostaconnessioneDB.getErrore() == NOERRORE) {
 						out.print("<p>" + "Connessione DB ok" + "</p>");
 					} else {
-						out.print("<p>" + "Errore connessione DB" + "</p>");
+						throw new SQLException("Errore SQL generato da inseriscinewuser.jsp a causa della mancata connessione al DB");
+						//out.print("<p>" + "Errore connessione DB" + "</p>");
 					}
+					/*il seguente if diventa inutile in caso di errore poichè al di sopra si lancia l'SQLException che passa l'esecuzione
+					alla pagina jsp di errore. Quindi in caso di errore il seguente codice non viene eseguito. Sarebbe da ristrutturare
+					completamente il codice*/
 					if (connettidriver.getErrore() == NOERRORE && impostaconnessioneDB.getErrore() == NOERRORE) {
 						/*definisco la variabile temp di tipo sanitizestring che è un mio oggetto che ha un metodo per bonificare
 						le stringhe per evitare il cross site scripting*/
