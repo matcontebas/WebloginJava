@@ -37,6 +37,7 @@
 			out.print("<p>" + "Connessione DB ok" + "</p>");
 		} else {
 			//out.print("<p>" + "Errore connessione DB" + "</p>");
+			//----ATTENZIONE, LA GESTIONE DELLE EXCEPTION NON FUNZIONA SUL BROWSER INTERNO DI ECLIPSE--------------
 			throw new SQLException("Errore SQL generato da first.jsp a causa della mancata connessione al DB");
 		}
 		/*il seguente if diventa inutile in caso di errore poichè al di sopra si lancia l'SQLException che passa l'esecuzione

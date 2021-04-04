@@ -32,8 +32,8 @@
 				String hostname = "localhost";
 					String dbname = "matteo";
 					String tabella = "login";
-					String colonnauser="userlogin";
-					String colonnapsw="pswlogin";
+					String colonnauser = "userlogin";
+					String colonnapsw = "pswlogin";
 					String user = "AccountProva";
 					String pass = "rn5skCZucrBfARRaCzUT.";
 					String usersicura = null;
@@ -56,7 +56,9 @@
 					if (impostaconnessioneDB.getErrore() == NOERRORE) {
 						out.print("<p>" + "Connessione DB ok" + "</p>");
 					} else {
-						throw new SQLException("Errore SQL generato da inseriscinewuser.jsp a causa della mancata connessione al DB");
+						//----ATTENZIONE, LA GESTIONE DELLE EXCEPTION NON FUNZIONA SUL BROWSER INTERNO DI ECLIPSE--------------
+						throw new SQLException(
+								"Errore SQL generato da inseriscinewuser.jsp a causa della mancata connessione al DB");
 						//out.print("<p>" + "Errore connessione DB" + "</p>");
 					}
 					/*il seguente if diventa inutile in caso di errore poichè al di sopra si lancia l'SQLException che passa l'esecuzione
@@ -90,14 +92,15 @@
 									out.print("<p>record non trovato " + esitoricerca + "</p>");
 									//-----------------CRIPTARE USER&PASSWORD----------------------------------
 									//inserimento nuovo record
-									pswcrypt=Crittohash256.Convertihextostring(Crittohash256.GetSHA(pswpulita));
-									String sql = "INSERT INTO " + tabella + " (" + colonnauser +", " + colonnapsw +")" +" values (?,?)";
+									pswcrypt = Crittohash256.Convertihextostring(Crittohash256.GetSHA(pswpulita));
+									String sql = "INSERT INTO " + tabella + " (" + colonnauser + ", " + colonnapsw + ")"
+											+ " values (?,?)";
 									try {
 										PreparedStatement pstm = connessione.prepareStatement(sql);
 										pstm.setString(1, userpulita);
 										pstm.setString(2, pswcrypt);
 										pstm.executeUpdate();
-										out.print("<p><b>Inserimento avvenuto con successo</b></p>");
+										out.print("<p style='color:red';><b>Inserimento avvenuto con successo</b></p>");
 										connessione.close();
 									} catch (SQLException e) {
 										e.printStackTrace();
