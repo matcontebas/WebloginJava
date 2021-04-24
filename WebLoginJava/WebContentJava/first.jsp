@@ -32,7 +32,7 @@
 		}
 		ConnessioneDBMySQL impostaconnessioneDB = new ConnessioneDBMySQL();
 		Connection connessione = impostaconnessioneDB.connettiDB("localhost:3306/matteo?serverTimezone=UTC",
-				"AccountProva", "rn5skCZucrBfARRaCzUT.");
+				user, pass);
 		if (impostaconnessioneDB.getErrore() == NOERRORE) {
 			out.print("<p>" + "Connessione DB ok" + "</p>");
 		} else {
@@ -88,7 +88,7 @@
 	<br>
 	<ul>
 		<li><p>azione 1</p></li>
-		<li><p>azione 2</p></li>
+		<li><p><a href="form_cancella_user.jsp">cancella user</a></p></li>
 		<li><p>
 				<a href="form_new_user.jsp">Inserisci new user</a>
 			</p></li>

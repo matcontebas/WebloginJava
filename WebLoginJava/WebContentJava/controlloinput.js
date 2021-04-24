@@ -19,7 +19,7 @@ function MyFunction(campouser, campopsw) {
 		var i = 0;
 		while (i< user.length){
 			if(user.charCodeAt(i)>127){
-				alert("attenzione");
+				//alert("attenzione");
 				messaggio.innerHTML= "carattere non permesso: "+user.charAt(i);
 				return false;
 			}

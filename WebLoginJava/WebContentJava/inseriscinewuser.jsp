@@ -89,7 +89,6 @@
 									out.print("<p><a href='login.html'>oppure ritorna alla homepage</a></p>");
 									break;
 								case 0:
-									out.print("<p>record non trovato " + esitoricerca + "</p>");
 									//-----------------CRIPTARE USER&PASSWORD----------------------------------
 									//inserimento nuovo record
 									pswcrypt = Crittohash256.Convertihextostring(Crittohash256.GetSHA(pswpulita));
