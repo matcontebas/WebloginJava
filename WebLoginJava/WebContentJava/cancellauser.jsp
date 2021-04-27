@@ -15,6 +15,7 @@
 	<div>
 		<%
 			HttpSession sessione = request.getSession();
+		//controllo se la sessione è attiva
 			if (sessione.getAttribute("login") != null) {
 				String nomeutente = sessione.getAttribute("login").toString();
 				String indirizzoDB = "localhost:3306/matteo?serverTimezone=UTC";
@@ -25,6 +26,14 @@
 				String passDB = "rn5skCZucrBfARRaCzUT.";
 				String user_da_cancellare = request.getParameter("user_da_cancellare");
 				final int NOERRORE = 1;
+				//Primo controllo: non si può cancellare l'account Amministratore.
+				if (user_da_cancellare.matches("Administrator") ){
+					throw new Exception ("Non si può cancellare l'account Amministratore");
+				}
+				//Secondo controllo: non si può cancellare l'account corrente
+				if (user_da_cancellare.matches(nomeutente) ){
+					throw new Exception ("Non si può cancellare l'account corrente");
+				}
 				ConnessioneDriverMySQL connettidriver = new ConnessioneDriverMySQL();
 				connettidriver.connettiDriver();
 				ConnessioneDBMySQL impostaconnessioneDB = new ConnessioneDBMySQL();
