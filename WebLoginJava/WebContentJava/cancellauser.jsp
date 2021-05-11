@@ -27,11 +27,11 @@
 				String user_da_cancellare = request.getParameter("user_da_cancellare");
 				final int NOERRORE = 1;
 				//Primo controllo: non si può cancellare l'account Amministratore.
-				if (user_da_cancellare.matches("Administrator") ){
+				if (user_da_cancellare.compareToIgnoreCase("Administrator")==0){
 					throw new Exception ("Non si può cancellare l'account Amministratore");
 				}
 				//Secondo controllo: non si può cancellare l'account corrente
-				if (user_da_cancellare.matches(nomeutente) ){
+				if (user_da_cancellare.compareToIgnoreCase(nomeutente)==0){
 					throw new Exception ("Non si può cancellare l'account corrente");
 				}
 				ConnessioneDriverMySQL connettidriver = new ConnessioneDriverMySQL();
