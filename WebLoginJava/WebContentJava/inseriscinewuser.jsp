@@ -100,6 +100,8 @@
 										pstm.setString(2, pswcrypt);
 										pstm.executeUpdate();
 										out.print("<p style='color:red';><b>Inserimento avvenuto con successo</b></p>");
+										out.print("<p><a href='form_new_user.jsp'>Nuovo inserimento</a></p>");									
+										out.print("<p><a href='login.html'>Torna alla Homepage</a></p>");
 										connessione.close();
 									} catch (SQLException e) {
 										e.printStackTrace();

@@ -87,7 +87,7 @@
 	</ul>
 	<br>
 	<ul>
-		<li><p>azione 1</p></li>
+		<li><p><a href="form_visualizza.jsp">Visualizza user</a></p></li>
 		<li><p><a href="form_cancella_user.jsp">cancella user</a></p></li>
 		<li><p>
 				<a href="form_new_user.jsp">Inserisci new user</a>
