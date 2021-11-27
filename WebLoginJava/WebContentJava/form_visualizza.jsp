@@ -23,7 +23,7 @@
 		<form name="modulovisualizzazione" action="visualizzauser.jsp"
 			method="post">
 			<p>
-				user:<input name="userdacercare" id=user_da_cercare>
+				user:<input name="userdacercare" id=user_da_cercare type="text" required>
 			</p>
 			<p>
 				<input name="bottone" value="invio" type="submit"> <input
@@ -31,5 +31,8 @@
 			</p>
 		</form>
 	</article>
+	<footer>
+		<p id="err" class="errore">modulo jsp in esecuzione: form_visualizza.jsp</p>
+	</footer>
 </body>
 </html>

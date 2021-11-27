@@ -36,8 +36,7 @@
 		}
 	%>
 	<footer>
-		<p id="err" class="errore"></p>
-		<p>modulo jsp in esecuzione: form_cancella_user.jsp</p>
+		<p id="err" class="errore">modulo jsp in esecuzione: form_cancella_user.jsp</p>
 	</footer>
 </body>
 </html>

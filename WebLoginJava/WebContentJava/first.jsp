@@ -25,7 +25,7 @@
 		ConnessioneDriverMySQL connettidriver = new ConnessioneDriverMySQL();
 		connettidriver.connettiDriver();
 		final int NOERRORE = 1;
-		if (connettidriver.getErrore() == 1) {
+		if (connettidriver.getErrore() == NOERRORE) {
 			out.print("<p>" + "Connessione driver ok" + "</p>");
 		} else {
 			out.print("<p>" + "Errore caricamento driver" + "</p>");
