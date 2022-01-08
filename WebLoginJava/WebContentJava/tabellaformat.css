@@ -1,0 +1,11 @@
+@charset "ISO-8859-1";
+table, th, td{
+	border: 1px solid green;
+	border-collapse: collapse;
+	text-align: left;
+}
+th{
+	background-color: yellow;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;

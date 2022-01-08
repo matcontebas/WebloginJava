@@ -8,6 +8,7 @@
 <title>Pagina errore</title>
 </head>
 <body>
+<h1>Pagina di errore</h1>
 	<div class="message">
 		Siamo spiacenti, si è verificato un errore durante l'esecuzione:<br />
 		<br />
